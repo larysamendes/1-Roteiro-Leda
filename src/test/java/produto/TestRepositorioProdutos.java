@@ -11,7 +11,7 @@ public class TestRepositorioProdutos {
 
 	@Before
 	public void setUp() {
-		this.repositorio = new RepositorioProdutoArrayList(10);
+		this.repositorio = new RepositorioProdutoArrayList();
 	}
 
 	@Test
@@ -28,7 +28,7 @@ public class TestRepositorioProdutos {
 	@Test
 	public void testAtualizar() {
 		repositorio.inserir(new Produto(5, "Feijao", 10.0, "Feijão carioca"));
-		assertEquals(0, repositorio.atualizar(new Produto(5, "Feijao", 10.0, "Feijão macassar")));
+		repositorio.atualizar(new Produto(5, "Feijao", 10.0, "Feijão macassar"));
 
 		assertEquals("Feijão macassar", repositorio.procurar(5).getDescricao());
 	}

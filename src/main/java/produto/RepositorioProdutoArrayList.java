@@ -26,7 +26,7 @@ public class RepositorioProdutoArrayList {
 	 */
 	// private int index = -1;
 
-	public RepositorioProdutoArrayList(int size) {
+	public RepositorioProdutoArrayList() {
 		super();
 		this.produtos = new ArrayList<>();
 	}
@@ -82,15 +82,13 @@ public class RepositorioProdutoArrayList {
 	 * esteja no array. Note que, para localizacao, o código do produto será
 	 * utilizado.
 	 */
-	public int atualizar(Produto produto) {
-
-		int indice = procurarIndice(produto.getCodigo());
-		if (indice == -1) {
-			throw new NoSuchElementException();
+	public void atualizar(Produto produto) {
+		if (!produtos.contains(produto)) {
+			throw new RuntimeException("Produto inexistente");
+		} else {
+			produtos.remove(produto);
+			produtos.add(produto);
 		}
-		this.produtos.remove(this.produtos.get(indice));
-		this.produtos.add(indice, produto);
-		return indice;
 	}
 
 	/**
